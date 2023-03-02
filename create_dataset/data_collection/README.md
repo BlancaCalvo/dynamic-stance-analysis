@@ -1,4 +1,4 @@
-# Dynamic-Stance
+# Data Collection
 
 Download the different corpora: 
 
