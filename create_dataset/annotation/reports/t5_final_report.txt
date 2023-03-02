@@ -1,0 +1,72 @@
+Namespace(data=['Lot_4/tasca_5 - Opinió Dinàmica Twitter/anotated_final.csv'], referee=False, task='5', metrics=None, span_level='token')
+
+
+Instances annotated: 6842
+
+LABELS DISTRIBUTION
+
+
+ANNOTATOR 1
+Label Disagree: 44.86%
+Label Query: 2.31%
+Label Elaborate: 32.74%
+Label Neutral: 17.58%
+Label Unrelated: 0.66%
+Label NA: 0.42%
+Label Agree: 1.43%
+
+
+ANNOTATOR 2
+Label Disagree: 40.01%
+Label Query: 4.28%
+Label Elaborate: 28.88%
+Label Neutral: 24.01%
+Label Unrelated: 1.29%
+Label NA: 0.4%
+Label Agree: 1.13%
+
+
+ANNOTATOR 3
+Label Disagree: 39.82%
+Label Query: 4.18%
+Label Elaborate: 29.23%
+Label Neutral: 23.01%
+Label Unrelated: 1.43%
+Label NA: 0.39%
+Label Agree: 1.95%
+
+
+ANNOTATOR 4
+Label Disagree: 40.85%
+Label Query: 3.77%
+Label Elaborate: 32.49%
+Label Neutral: 19.16%
+Label Unrelated: 1.51%
+Label NA: 0.37%
+Label Agree: 1.85%
+
+
+ANNOTATOR 5
+Label Disagree: 33.56%
+Label Query: 3.26%
+Label Elaborate: 27.19%
+Label Neutral: 16.49%
+Label Unrelated: 1.33%
+Label NA: 0.31%
+Label Agree: 1.67%
+Label : 16.2%
+
+
+IAA BETWEEN ANNOTATORS
+Agreement between annotator 1 and 2: 0.5286613737850587
+Agreement between annotator 1 and 3: 0.651114908714155
+Agreement between annotator 1 and 4: 0.5702485507197814
+Agreement between annotator 1 and 5: 0.8350912655357506
+Agreement between annotator 2 and 3: 0.5962955310463984
+Agreement between annotator 2 and 4: 0.46836767647269684
+Agreement between annotator 2 and 5: 0.8394060996953614
+Agreement between annotator 3 and 4: 0.5954033801882881
+Agreement between annotator 3 and 5: 0.9001854472548491
+Agreement between annotator 4 and 5: 0.8320072853015873
+
+Overall Fleiss' Kappa between the 4 main annotators: 0.5650673626035393

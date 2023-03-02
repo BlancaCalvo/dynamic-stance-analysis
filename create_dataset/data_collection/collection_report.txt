@@ -1,0 +1,40 @@
+Namespace(topics='vaccines lloguer aeroport subrogada benidormfest', lang='ca', directory='data/')
+
+ vaccines
+Imported pairs 32152
+Deduplicated pairs 3703
+Filtered pairs 2540
+Filtered tuits 4303
+Chosen pairs 2540
+
+ lloguer
+Imported pairs 11833
+Deduplicated pairs 2139
+Filtered pairs 1555
+Filtered tuits 2710
+Chosen pairs 1555
+
+ aeroport
+Imported pairs 17189
+Deduplicated pairs 1559
+Filtered pairs 1082
+Filtered tuits 1941
+Chosen pairs 1082
+
+ subrogada
+Imported pairs 16262
+Deduplicated pairs 1456
+Filtered pairs 998
+Filtered tuits 1655
+Chosen pairs 998
+
+ benidormfest
+Imported pairs 11140
+Deduplicated pairs 910
+Filtered pairs 460
+Filtered tuits 834
+Chosen pairs 460
+
+
+Total tuits 11075
+Sum from all pairs 6635

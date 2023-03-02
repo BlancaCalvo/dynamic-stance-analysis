@@ -1,0 +1,38 @@
+Namespace(data=['Lot_4/tasca_6 - Opinió Estática/anotated_final.csv'], referee=False, task='6', metrics=None, span_level='token')
+
+
+Instances annotated: 11197
+
+LABELS DISTRIBUTION
+
+
+ANNOTATOR 1
+Label NEUTRAL: 26.74%
+Label NA: 32.79%
+Label AGAINST: 19.6%
+Label FAVOUR: 20.84%
+Label : 0.02%
+
+
+ANNOTATOR 2
+Label NEUTRAL: 27.14%
+Label NA: 32.99%
+Label AGAINST: 19.27%
+Label FAVOUR: 20.59%
+Label : 0.01%
+
+
+ANNOTATOR 3
+Label NEUTRAL: 20.16%
+Label NA: 23.12%
+Label AGAINST: 13.38%
+Label FAVOUR: 14.3%
+Label : 29.05%
+
+
+IAA BETWEEN ANNOTATORS
+Agreement between annotator 1 and 2: 0.8271918164918628
+Agreement between annotator 1 and 3: 0.9217865163442021
+Agreement between annotator 2 and 3: 0.9045077170510147
+
+Overall Fleiss' Kappa between the 2 main annotators: 0.8271830006685353
