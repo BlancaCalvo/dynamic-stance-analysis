@@ -1,0 +1,207 @@
+../data/annotated/static_stance_tweets.csv
+../data/annotated/dynamic_stance_tweets.csv
+static: 11199
+dynamic: 6843
+Unique matching ids: 11078
+Unique ids in the dynamic stance dataset: 11204
+Unique ids in the static stance dataset: 11199
+
+Labels of static stance in topic aeroport
+NEUTRAL: 26% 482
+NA: 45% 835
+AGAINST: 25% 470
+FAVOUR: 5% 86
+TOTAL: 1873
+
+Labels of dynamic stance in topic aeroport
+Unrelated: 1% 11
+Agree: 2% 20
+Disagree: 41% 447
+Neutral: 14% 148
+Query: 3% 28
+Elaborate: 39% 419
+NA: 0% 5
+TOTAL: 1078
+
+Labels of static stance in topic vaccines
+NEUTRAL: 40% 1741
+NA: 26% 1125
+FAVOUR: 22% 948
+AGAINST: 12% 497
+TOTAL: 4311
+
+Labels of dynamic stance in topic vaccines
+Disagree: 40% 1154
+Query: 5% 157
+Elaborate: 27% 771
+Neutral: 24% 699
+Agree: 2% 52
+NA: 1% 20
+Unrelated: 1% 17
+TOTAL: 2870
+
+Labels of static stance in topic lloguer
+AGAINST: 14% 387
+FAVOUR: 35% 950
+NEUTRAL: 15% 411
+NA: 36% 982
+TOTAL: 2730
+
+Labels of dynamic stance in topic lloguer
+Disagree: 40% 620
+Elaborate: 40% 621
+Agree: 2% 35
+Neutral: 12% 192
+Unrelated: 4% 61
+Query: 2% 26
+NA: 0% 1
+TOTAL: 1556
+
+Labels of static stance in topic benidormfest
+NA: 57% 392
+NEUTRAL: 30% 209
+FAVOUR: 9% 65
+AGAINST: 3% 22
+TOTAL: 688
+
+Labels of dynamic stance in topic benidormfest
+Disagree: 31% 125
+Elaborate: 46% 183
+Neutral: 18% 74
+Unrelated: 2% 8
+Query: 2% 8
+Agree: 1% 3
+TOTAL: 401
+
+Labels of static stance in topic subrogada
+NA: 29% 430
+AGAINST: 44% 654
+NEUTRAL: 19% 277
+FAVOUR: 8% 115
+TOTAL: 1476
+
+Labels of dynamic stance in topic subrogada
+Disagree: 54% 466
+Elaborate: 33% 288
+Neutral: 9% 78
+Query: 2% 21
+Agree: 1% 9
+Unrelated: 1% 6
+TOTAL: 868
+
+Position of original messages in topic aeroport
+NA: 66% 715
+AGAINST: 15% 161
+NEUTRAL: 14% 149
+FAVOUR: 5% 53
+TOTAL: 1078
+
+Position of original messages in topic vaccines
+FAVOUR: 22% 621
+NEUTRAL: 33% 947
+AGAINST: 8% 233
+NA: 37% 1069
+TOTAL: 2870
+
+Position of original messages in topic lloguer
+NA: 58% 903
+FAVOUR: 23% 365
+NEUTRAL: 13% 202
+AGAINST: 6% 86
+TOTAL: 1556
+
+Position of original messages in topic benidormfest
+NA: 75% 300
+NEUTRAL: 20% 79
+AGAINST: 2% 8
+FAVOUR: 3% 14
+TOTAL: 401
+
+Position of original messages in topic subrogada
+NA: 52% 451
+NEUTRAL: 16% 135
+FAVOUR: 10% 89
+AGAINST: 22% 193
+TOTAL: 868
+
+Position of answer messages in topic aeroport
+AGAINST: 36% 393
+NEUTRAL: 35% 381
+NA: 22% 240
+FAVOUR: 6% 64
+TOTAL: 1078
+
+Position of answer messages in topic vaccines
+AGAINST: 14% 409
+FAVOUR: 25% 706
+NEUTRAL: 48% 1377
+NA: 13% 378
+TOTAL: 2870
+
+Position of answer messages in topic lloguer
+AGAINST: 21% 329
+FAVOUR: 47% 730
+NEUTRAL: 18% 279
+NA: 14% 218
+TOTAL: 1556
+
+Position of answer messages in topic benidormfest
+NA: 38% 151
+AGAINST: 7% 27
+NEUTRAL: 41% 164
+FAVOUR: 15% 59
+TOTAL: 401
+
+Position of answer messages in topic subrogada
+NEUTRAL: 24% 210
+NA: 6% 54
+AGAINST: 61% 528
+FAVOUR: 9% 76
+TOTAL: 868
+
+Dynamic labels of pairs with dynamic original FAVOUR and answer AGAINST
+Disagree: 86% 248
+Query: 2% 7
+Neutral: 4% 11
+Elaborate: 8% 23
+Agree: 0% 1
+TOTAL: 290
+
+Dynamic labels of pairs with dynamic original AGAINST and answer FAVOUR
+Disagree: 78% 149
+Query: 2% 3
+Neutral: 5% 10
+Elaborate: 15% 28
+TOTAL: 190
+
+Dynamic labels of pairs with dynamic original FAVOUR and answer FAVOUR
+Elaborate: 57% 216
+Disagree: 26% 97
+Neutral: 7% 27
+Query: 2% 9
+Agree: 8% 29
+TOTAL: 378
+
+Dynamic labels of pairs with dynamic original AGAINST and answer AGAINST
+Elaborate: 68% 149
+Disagree: 21% 47
+Agree: 7% 16
+Query: 1% 2
+Neutral: 2% 5
+TOTAL: 219
+
+Dynamic labels of pairs with dynamic original NEUTRAL and answer AGAINST
+Disagree: 58% 170
+Neutral: 12% 36
+Elaborate: 27% 78
+Query: 1% 4
+Unrelated: 1% 3
+TOTAL: 291
+
+Dynamic labels of pairs with dynamic original NEUTRAL and answer FAVOUR
+Disagree: 39% 145
+Neutral: 26% 95
+Elaborate: 31% 115
+Agree: 1% 5
+Query: 2% 9
+TOTAL: 369
