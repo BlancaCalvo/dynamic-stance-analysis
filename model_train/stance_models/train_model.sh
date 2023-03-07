@@ -29,17 +29,16 @@ SEED=1
 
 MODEL="/gpfs/projects/bsc88/huggingface/models/roberta-base-ca-v2"
 DATASET_PATH="/gpfs/scratch/bsc88/bsc88080/stance_models/DynamicStance.py"
-LEARN_RATE=0.00005
+LEARN_RATE=0.00001
 MODEL_NAME=$( basename $MODEL )
-NUM_EPOCHS=5
+NUM_EPOCHS=10
 BATCH_SIZE=8
 MAX_LENGTH=512
 GRADIENT_ACC_STEPS=1
 BATCH_SIZE_PER_GPU=$(( $BATCH_SIZE*$GRADIENT_ACC_STEPS ))
 DATASET_NAME=$( basename $DATASET_PATH )
 
-TASK="paraf"
-METRIC="combined_score"
+TASK="d_stance"
 SCRIPT="/gpfs/scratch/bsc88/bsc88080/stance_models/run_glue.py"
 
 
@@ -58,7 +57,6 @@ MODEL_ARGS+=" \
  --per_device_train_batch_size $BATCH_SIZE \
  --learning_rate $LEARN_RATE \
  --max_seq_length $MAX_LENGTH \
- --metric_for_best_model $METRIC \
  --evaluation_strategy epoch \
  --save_strategy epoch \
  "
@@ -69,7 +67,7 @@ MODEL_ARGS+=" \
 
 OUTPUT_DIR='output/'$MODEL_NAME
 LOGGING_DIR='tb/'$MODEL_NAME
-DIR_NAME=${DATASET_NAME}_${BATCH_SIZE_PER_GPU}_${LEARN_RATE}_date_22-10-14_time_16-03-07 #$DATETIME
+DIR_NAME=${DATASET_NAME}_${BATCH_SIZE_PER_GPU}_${LEARN_RATE}_${NUM_EPOCHS}_date_${DATETIME} #$DATETIME
 CACHE_DIR='cache/'$OUTPUT_DIR/$DIR_NAME
 
 OUTPUT_ARGS=" \

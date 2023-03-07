@@ -39,7 +39,7 @@ class DynamicStanceConfig(datasets.BuilderConfig):
 
 
 class DynamicStance(datasets.GeneratorBasedBuilder):
-    """ Parafrasis Dataset """
+    """ DynamicStance Dataset """
 
 
     BUILDER_CONFIGS = [
