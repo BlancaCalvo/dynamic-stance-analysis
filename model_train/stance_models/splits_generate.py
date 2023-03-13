@@ -8,19 +8,41 @@ def save_json(test, train, dev, names):
     for i, split in enumerate([test, train, dev]):
         with open('data/random_splits/'+names[i] + '.jsonl', 'w') as file:
             for line in split:
-                file.write(json.dumps({'_id': line[0]+'_'+line[1], 'original': line[2], 'answer': line[3], 'label': line[10]}) + "\n")
+                file.write(json.dumps({'_id': line[0]+'_'+line[1], 'original': line[2], 'answer': line[3], 'label': line[9]}) + "\n")
+
+def get_golden_label(data, key):
+    indexes = {'dynamic':{'last':8, 'labels':[4,7]}, 'static':{'last':5, 'labels':[3,4]}}
+    for line in data:
+        if line[indexes[key]['last']]:
+            line.append(line[indexes[key]['last']])
+        else:
+            labels = line[indexes[key]['labels'][0]:indexes[key]['labels'][1]]
+            line.append(max(set(labels), key=labels.count))
+    return data
 
 def main():
+    do_topic = False
+    include_raco = True
+    topics = ['aeroport', 'vaccines', 'lloguer', 'benidormfest', 'subrogada']
+    if do_topic:
+        tweets_path = 'data/matching/dynamic_stance.csv'
+    else:
+        tweets_path = 'data/annotated/dynamic_stance_tweets.csv'
+
     data = []
-    with open('data/matching/dynamic_stance.csv') as f:
+    with open (tweets_path) as f:
         reader = csv.reader(f)
         for item in reader:
             data.append(item)
 
+    if include_raco and not do_topic:
+        with open('data/annotated/dynamic_stance_forums.csv') as f:
+            reader = csv.reader(f)
+            for item in reader:
+                data.append(item)
+    #exit()
+    data = get_golden_label(data, 'dynamic')
     random.shuffle(data)
-
-    do_topic = True
-    topics = ['aeroport', 'vaccines', 'lloguer', 'benidormfest', 'subrogada']
 
     if do_topic:
         for topic in topics:
