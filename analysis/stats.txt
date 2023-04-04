@@ -1,207 +1,210 @@
-../data/annotated/static_stance_tweets.csv
+../data/annotated/static_stance_2.csv
 ../data/annotated/dynamic_stance_tweets.csv
+../data/annotated/emotion_tweets.csv
 static: 11199
 dynamic: 6843
+emo: 11198
+emotions: 11198
 Unique matching ids: 11078
 Unique ids in the dynamic stance dataset: 11204
 Unique ids in the static stance dataset: 11199
 
-Labels of static stance in topic aeroport
-NEUTRAL: 26% 482
-NA: 45% 835
-AGAINST: 25% 470
-FAVOUR: 5% 86
-TOTAL: 1873
-
-Labels of dynamic stance in topic aeroport
-Unrelated: 1% 11
-Agree: 2% 20
-Disagree: 41% 447
-Neutral: 14% 148
-Query: 3% 28
-Elaborate: 39% 419
-NA: 0% 5
-TOTAL: 1078
-
 Labels of static stance in topic vaccines
-NEUTRAL: 40% 1741
-NA: 26% 1125
-FAVOUR: 22% 948
-AGAINST: 12% 497
+NEUTRAL: 41.89% 1806
+NA: 22.99% 991
+FAVOUR: 22.78% 982
+AGAINST: 12.34% 532
 TOTAL: 4311
 
-Labels of dynamic stance in topic vaccines
-Disagree: 40% 1154
-Query: 5% 157
-Elaborate: 27% 771
-Neutral: 24% 699
-Agree: 2% 52
-NA: 1% 20
-Unrelated: 1% 17
-TOTAL: 2870
-
 Labels of static stance in topic lloguer
-AGAINST: 14% 387
-FAVOUR: 35% 950
-NEUTRAL: 15% 411
-NA: 36% 982
+AGAINST: 14.84% 405
+FAVOUR: 36.26% 990
+NEUTRAL: 15.86% 433
+NA: 33.04% 902
 TOTAL: 2730
 
-Labels of dynamic stance in topic lloguer
-Disagree: 40% 620
-Elaborate: 40% 621
-Agree: 2% 35
-Neutral: 12% 192
-Unrelated: 4% 61
-Query: 2% 26
-NA: 0% 1
-TOTAL: 1556
-
-Labels of static stance in topic benidormfest
-NA: 57% 392
-NEUTRAL: 30% 209
-FAVOUR: 9% 65
-AGAINST: 3% 22
-TOTAL: 688
-
-Labels of dynamic stance in topic benidormfest
-Disagree: 31% 125
-Elaborate: 46% 183
-Neutral: 18% 74
-Unrelated: 2% 8
-Query: 2% 8
-Agree: 1% 3
-TOTAL: 401
+Labels of static stance in topic aeroport
+NEUTRAL: 26.0% 487
+NA: 43.83% 821
+AGAINST: 25.31% 474
+FAVOUR: 4.86% 91
+TOTAL: 1873
 
 Labels of static stance in topic subrogada
-NA: 29% 430
-AGAINST: 44% 654
-NEUTRAL: 19% 277
-FAVOUR: 8% 115
+NA: 21.07% 311
+AGAINST: 48.24% 712
+NEUTRAL: 19.85% 293
+FAVOUR: 10.84% 160
 TOTAL: 1476
 
-Labels of dynamic stance in topic subrogada
-Disagree: 54% 466
-Elaborate: 33% 288
-Neutral: 9% 78
-Query: 2% 21
-Agree: 1% 9
-Unrelated: 1% 6
-TOTAL: 868
+Labels of static stance in topic benidormfest
+NA: 50.0% 344
+NEUTRAL: 35.17% 242
+FAVOUR: 10.9% 75
+AGAINST: 3.92% 27
+TOTAL: 688
 
-Position of original messages in topic aeroport
-NA: 66% 715
-AGAINST: 15% 161
-NEUTRAL: 14% 149
-FAVOUR: 5% 53
+Labels of dynamic stance in topic vaccines
+Disagree: 40.21% 1154
+Query: 5.47% 157
+Elaborate: 26.86% 771
+Neutral: 24.36% 699
+Agree: 1.81% 52
+NA: 0.7% 20
+Unrelated: 0.59% 17
+TOTAL: 2870
+
+Labels of dynamic stance in topic lloguer
+Disagree: 39.85% 620
+Elaborate: 39.91% 621
+Agree: 2.25% 35
+Neutral: 12.34% 192
+Unrelated: 3.92% 61
+Query: 1.67% 26
+NA: 0.06% 1
+TOTAL: 1556
+
+Labels of dynamic stance in topic aeroport
+Unrelated: 1.02% 11
+Agree: 1.86% 20
+Disagree: 41.47% 447
+Neutral: 13.73% 148
+Query: 2.6% 28
+Elaborate: 38.87% 419
+NA: 0.46% 5
 TOTAL: 1078
 
+Labels of dynamic stance in topic subrogada
+Disagree: 53.69% 466
+Elaborate: 33.18% 288
+Neutral: 8.99% 78
+Query: 2.42% 21
+Agree: 1.04% 9
+Unrelated: 0.69% 6
+TOTAL: 868
+
+Labels of dynamic stance in topic benidormfest
+Disagree: 31.17% 125
+Elaborate: 45.64% 183
+Neutral: 18.45% 74
+Unrelated: 2.0% 8
+Query: 2.0% 8
+Agree: 0.75% 3
+TOTAL: 401
+
 Position of original messages in topic vaccines
-FAVOUR: 22% 621
-NEUTRAL: 33% 947
-AGAINST: 8% 233
-NA: 37% 1069
+FAVOUR: 22.86% 656
+NEUTRAL: 35.4% 1016
+AGAINST: 9.51% 273
+NA: 32.23% 925
 TOTAL: 2870
 
 Position of original messages in topic lloguer
-NA: 58% 903
-FAVOUR: 23% 365
-NEUTRAL: 13% 202
-AGAINST: 6% 86
+FAVOUR: 26.61% 414
+NA: 51.99% 809
+NEUTRAL: 14.46% 225
+AGAINST: 6.94% 108
 TOTAL: 1556
 
-Position of original messages in topic benidormfest
-NA: 75% 300
-NEUTRAL: 20% 79
-AGAINST: 2% 8
-FAVOUR: 3% 14
-TOTAL: 401
-
-Position of original messages in topic subrogada
-NA: 52% 451
-NEUTRAL: 16% 135
-FAVOUR: 10% 89
-AGAINST: 22% 193
-TOTAL: 868
-
-Position of answer messages in topic aeroport
-AGAINST: 36% 393
-NEUTRAL: 35% 381
-NA: 22% 240
-FAVOUR: 6% 64
+Position of original messages in topic aeroport
+NA: 64.84% 699
+AGAINST: 15.31% 165
+NEUTRAL: 14.38% 155
+FAVOUR: 5.47% 59
 TOTAL: 1078
 
+Position of original messages in topic subrogada
+NA: 33.41% 290
+NEUTRAL: 17.97% 156
+FAVOUR: 18.32% 159
+AGAINST: 30.3% 263
+TOTAL: 868
+
+Position of original messages in topic benidormfest
+NA: 59.35% 238
+NEUTRAL: 29.68% 119
+AGAINST: 3.74% 15
+FAVOUR: 7.23% 29
+TOTAL: 401
+
 Position of answer messages in topic vaccines
-AGAINST: 14% 409
-FAVOUR: 25% 706
-NEUTRAL: 48% 1377
-NA: 13% 378
+AGAINST: 14.43% 414
+FAVOUR: 24.84% 713
+NEUTRAL: 48.57% 1394
+NA: 12.16% 349
 TOTAL: 2870
 
 Position of answer messages in topic lloguer
-AGAINST: 21% 329
-FAVOUR: 47% 730
-NEUTRAL: 18% 279
-NA: 14% 218
+AGAINST: 21.21% 330
+FAVOUR: 46.92% 730
+NEUTRAL: 18.06% 281
+NA: 13.82% 215
 TOTAL: 1556
 
-Position of answer messages in topic benidormfest
-NA: 38% 151
-AGAINST: 7% 27
-NEUTRAL: 41% 164
-FAVOUR: 15% 59
-TOTAL: 401
+Position of answer messages in topic aeroport
+AGAINST: 36.46% 393
+NEUTRAL: 35.34% 381
+NA: 22.17% 239
+FAVOUR: 6.03% 65
+TOTAL: 1078
 
 Position of answer messages in topic subrogada
-NEUTRAL: 24% 210
-NA: 6% 54
-AGAINST: 61% 528
-FAVOUR: 9% 76
+NEUTRAL: 24.19% 210
+NA: 5.99% 52
+AGAINST: 60.94% 529
+FAVOUR: 8.87% 77
 TOTAL: 868
 
+Position of answer messages in topic benidormfest
+NA: 37.41% 150
+AGAINST: 6.73% 27
+NEUTRAL: 41.15% 165
+FAVOUR: 14.71% 59
+TOTAL: 401
+
 Dynamic labels of pairs with dynamic original FAVOUR and answer AGAINST
-Disagree: 86% 248
-Query: 2% 7
-Neutral: 4% 11
-Elaborate: 8% 23
-Agree: 0% 1
-TOTAL: 290
+Disagree: 86.7% 313
+Query: 2.22% 8
+Neutral: 3.32% 12
+Elaborate: 7.48% 27
+Agree: 0.28% 1
+TOTAL: 361
 
 Dynamic labels of pairs with dynamic original AGAINST and answer FAVOUR
-Disagree: 78% 149
-Query: 2% 3
-Neutral: 5% 10
-Elaborate: 15% 28
-TOTAL: 190
+Disagree: 78.24% 169
+Query: 1.39% 3
+Neutral: 5.09% 11
+Elaborate: 15.28% 33
+TOTAL: 216
 
 Dynamic labels of pairs with dynamic original FAVOUR and answer FAVOUR
-Elaborate: 57% 216
-Disagree: 26% 97
-Neutral: 7% 27
-Query: 2% 9
-Agree: 8% 29
-TOTAL: 378
+Elaborate: 57.41% 244
+Disagree: 25.88% 110
+Neutral: 7.06% 30
+Query: 2.35% 10
+Agree: 7.29% 31
+TOTAL: 425
 
 Dynamic labels of pairs with dynamic original AGAINST and answer AGAINST
-Elaborate: 68% 149
-Disagree: 21% 47
-Agree: 7% 16
-Query: 1% 2
-Neutral: 2% 5
-TOTAL: 219
+Elaborate: 69.86% 204
+Disagree: 20.21% 59
+Agree: 6.51% 19
+Neutral: 2.4% 7
+Query: 1.03% 3
+TOTAL: 292
 
 Dynamic labels of pairs with dynamic original NEUTRAL and answer AGAINST
-Disagree: 58% 170
-Neutral: 12% 36
-Elaborate: 27% 78
-Query: 1% 4
-Unrelated: 1% 3
-TOTAL: 291
+Disagree: 57.78% 193
+Neutral: 12.57% 42
+Elaborate: 27.54% 92
+Query: 1.2% 4
+Unrelated: 0.9% 3
+TOTAL: 334
 
 Dynamic labels of pairs with dynamic original NEUTRAL and answer FAVOUR
-Disagree: 39% 145
-Neutral: 26% 95
-Elaborate: 31% 115
-Agree: 1% 5
-Query: 2% 9
-TOTAL: 369
+Disagree: 38.92% 158
+Neutral: 25.12% 102
+Elaborate: 32.02% 130
+Agree: 1.48% 6
+Query: 2.46% 10
+TOTAL: 406
