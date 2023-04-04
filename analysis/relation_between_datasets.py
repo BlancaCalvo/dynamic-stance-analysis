@@ -3,6 +3,7 @@ import csv
 from collections import Counter
 import numpy as np
 import matplotlib.pyplot as plt
+import json
 
 def load_csv(file):
     with open(file) as f:
@@ -48,7 +49,7 @@ def keep_only_matching(datasets, matching):
             if key == 'dynamic':
                 if line[0] in matching and line[1] in matching:
                     matching_datasets[key].append(line)
-            if key == 'static':
+            if key in ['static', 'emotions']:
                 if line[0] in matching:
                     matching_datasets[key].append(line)
     return matching_datasets
@@ -65,12 +66,19 @@ def assign_topic_to_dynamic(datasets):
 def get_golden_label(datasets):
     indexes = {'dynamic':{'last':8, 'labels':[4,7]}, 'static':{'last':5, 'labels':[3,4]}}
     for key, item in datasets.items():
-        for line in item:
-            if line[indexes[key]['last']]:
-                line.append(line[indexes[key]['last']])
-            else:
-                labels = line[indexes[key]['labels'][0]:indexes[key]['labels'][1]]
-                line.append(max(set(labels), key=labels.count))
+        if key == 'emotions':
+            for line in item:
+                labels = []
+                for field in [3,4,5]:
+                    labels.extend(line[field].split('|'))
+                line.append(list(set(labels)))
+        else:
+            for line in item:
+                if line[indexes[key]['last']]:
+                    line.append(line[indexes[key]['last']])
+                else:
+                    labels = line[indexes[key]['labels'][0]:indexes[key]['labels'][1]]
+                    line.append(max(set(labels), key=labels.count))
     return datasets
 
 def get_stats_by_topic(datasets, topics, task, remove_na=True):
@@ -93,7 +101,7 @@ def get_stats_by_topic(datasets, topics, task, remove_na=True):
                 total+=1
         for combination, c in Counter(counts).items():
             if use_print:
-                print(combination+':', str(round(c/total*100))+'%', c)
+                print(combination+':', str(round(c/total*100, 2))+'%', c)
             result.append(c/total*100)
         if use_print:
             print('TOTAL:', total)
@@ -116,13 +124,13 @@ def get_static_stats_by_type_comment(datasets, topics, type='original'):
             if line[9] == topic:
                 counts.append(id_static_to_label[line[type_index]])
                 total += 1
-                if id_static_to_label[line[0]] == 'NA' and id_static_to_label[line[1]] != 'NA':
-                    print()
-                    print(line[2])
-                    print(line[3], id_static_to_label[line[1]])
+                #if id_static_to_label[line[0]] == 'NA' and id_static_to_label[line[1]] != 'NA':
+                #    print()
+                #    print(line[2])
+                #    print(line[3], id_static_to_label[line[1]])
         for combination, c in Counter(counts).items():
             if use_print:
-                print(combination + ':', str(round(c / total * 100)) + '%', c)
+                print(combination + ':', str(round(c / total * 100, 2)) + '%', c)
             result.append(c/total*100)
         if use_print:
             print('TOTAL:', total)
@@ -146,7 +154,7 @@ def get_dynamic_stats_given_static(datasets, labels):
             total += 1
     for combination, c in Counter(counts).items():
         if use_print:
-            print(combination + ':', str(round(c / total * 100)) + '%', c)
+            print(combination + ':', str(round(c / total * 100, 2)) + '%', c)
     if use_print:
         print('TOTAL:', total)
 
@@ -164,41 +172,74 @@ def plot_labels(results, topics):
     plt.legend()
     plt.show()
 
+def json_with_all_data(datasets):
+    id_to_line = {}
+    for key, data in datasets.items():
+        if key in ['emotions', 'static']:
+            id_to_line[key] = {}
+            for i,line in enumerate(datasets[key]):
+                id_to_line[key][line[0]] = i
+    final = []
+    for i,line in enumerate(datasets['dynamic']):
+        final.append({'_id':str(i),
+                      'id_original': line[0],
+                      'id_answer': line[1],
+                      'original_text': line[2],
+                      'answer_text': line[3],
+                      'topic': line[6],
+                      'dynamic_stance': line[7],
+                      'original_stance': datasets['static'][id_to_line['static'][line[0]]][6],
+                      'answer_stance': datasets['static'][id_to_line['static'][line[1]]][6],
+                      'original_emotion': datasets['emotions'][id_to_line['emotions'][line[0]]][6],
+                      'answer_emotion': datasets['emotions'][id_to_line['emotions'][line[1]]][6],
+                      })
+
+    with open('../data/final_dataset.jsonl', 'w') as f:
+        for line in final:
+            f.write(json.dumps(line))
+            f.write('\n')
+
 
 def main():
+    global use_print
+    use_print = False
 
-    paths = {'static': '../data/annotated/static_stance_tweets.csv',
-             'dynamic': '../data/annotated/dynamic_stance_tweets.csv'
+    paths = {'static': '../data/annotated/static_stance_2.csv',
+             'dynamic': '../data/annotated/dynamic_stance_tweets.csv',
+             'emo':  '../data/annotated/emotion_tweets.csv'
              }
-    topics = ['aeroport', 'vaccines', 'lloguer', 'benidormfest', 'subrogada']
+    topics = ['vaccines', 'lloguer', 'aeroport',  'subrogada', 'benidormfest']
     datasets = {}
     for key,item in paths.items():
         print(item)
         datasets[key] = load_csv(item)
 
-    global use_print
-    use_print = False
+    datasets['emotions'] = []
+    for line in datasets['emo']:
+        new_line = [line[1], line[0], line[2], line[3], line[4], line[5]]
+        datasets['emotions'].append(new_line)
 
     matching = check_unique_ids(datasets)
     matching_datasets = keep_only_matching(datasets, matching)
     matching_datasets = assign_topic_to_dynamic(matching_datasets)
     matching_datasets = get_golden_label(matching_datasets)
     save_csv(matching_datasets['dynamic'], '../data/matching/dynamic_stance.csv')
-    #print(matching_datasets['static'][4])
-    #print(matching_datasets['dynamic'][800])
+    save_csv(matching_datasets['static'], '../data/matching/static_stance.csv')
+    save_csv(matching_datasets['emotions'], '../data/matching/emotion.csv')
 
-    #get_stats_by_topic(matching_datasets, topics)
+    json_with_all_data(matching_datasets)
+
     static_stats = get_stats_by_topic(matching_datasets, topics, 'static', remove_na=False)
     dynamic_stats = get_stats_by_topic(matching_datasets, topics, 'dynamic', remove_na=False)
 
     original_static = get_static_stats_by_type_comment(matching_datasets, topics, type='original')
     answer_static = get_static_stats_by_type_comment(matching_datasets, topics, type='answer')
 
-    #get_dynamic_stats_given_static(matching_datasets, labels=['FAVOUR', 'AGAINST'])
-    #get_dynamic_stats_given_static(matching_datasets, labels=['AGAINST', 'FAVOUR'])
-    #get_dynamic_stats_given_static(matching_datasets, labels=['FAVOUR', 'FAVOUR'])
-    #get_dynamic_stats_given_static(matching_datasets, labels=['AGAINST', 'AGAINST'])
-    #get_dynamic_stats_given_static(matching_datasets, labels=['NEUTRAL', 'AGAINST'])
+    get_dynamic_stats_given_static(matching_datasets, labels=['FAVOUR', 'AGAINST'])
+    get_dynamic_stats_given_static(matching_datasets, labels=['AGAINST', 'FAVOUR'])
+    get_dynamic_stats_given_static(matching_datasets, labels=['FAVOUR', 'FAVOUR'])
+    get_dynamic_stats_given_static(matching_datasets, labels=['AGAINST', 'AGAINST'])
+    get_dynamic_stats_given_static(matching_datasets, labels=['NEUTRAL', 'AGAINST'])
     get_dynamic_stats_given_static(matching_datasets, labels=['NEUTRAL', 'FAVOUR'])
 
     #plot_labels(static_stats, topics)
