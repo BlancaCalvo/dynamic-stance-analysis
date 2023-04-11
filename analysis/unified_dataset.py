@@ -172,7 +172,11 @@ def plot_labels(results, topics):
     plt.legend()
     plt.show()
 
-def json_with_all_data(datasets):
+def json_with_all_data(datasets, remove_text=False):
+    if remove_text:
+        out = '../data/uploading_dataset.jsonl'
+    else:
+        out = '../data/final_dataset.jsonl'
     id_to_line = {}
     for key, data in datasets.items():
         if key in ['emotions', 'static']:
@@ -181,20 +185,26 @@ def json_with_all_data(datasets):
                 id_to_line[key][line[0]] = i
     final = []
     for i,line in enumerate(datasets['dynamic']):
+        if remove_text:
+            original_text = ''
+            answer_text = ''
+        else:
+            original_text = line[2]
+            answer_text = line[3]
         final.append({'_id':str(i),
                       'id_original': line[0],
                       'id_answer': line[1],
-                      'original_text': line[2],
-                      'answer_text': line[3],
-                      'topic': line[6],
-                      'dynamic_stance': line[7],
+                      'original_text': original_text,
+                      'answer_text': answer_text,
+                      'topic': line[9],
+                      'dynamic_stance': line[10],
                       'original_stance': datasets['static'][id_to_line['static'][line[0]]][6],
                       'answer_stance': datasets['static'][id_to_line['static'][line[1]]][6],
                       'original_emotion': datasets['emotions'][id_to_line['emotions'][line[0]]][6],
                       'answer_emotion': datasets['emotions'][id_to_line['emotions'][line[1]]][6],
                       })
 
-    with open('../data/final_dataset.jsonl', 'w') as f:
+    with open(out, 'w') as f:
         for line in final:
             f.write(json.dumps(line))
             f.write('\n')
@@ -228,19 +238,20 @@ def main():
     save_csv(matching_datasets['emotions'], '../data/matching/emotion.csv')
 
     json_with_all_data(matching_datasets)
+    json_with_all_data(matching_datasets, remove_text=True)
 
-    static_stats = get_stats_by_topic(matching_datasets, topics, 'static', remove_na=False)
-    dynamic_stats = get_stats_by_topic(matching_datasets, topics, 'dynamic', remove_na=False)
-
-    original_static = get_static_stats_by_type_comment(matching_datasets, topics, type='original')
-    answer_static = get_static_stats_by_type_comment(matching_datasets, topics, type='answer')
-
-    get_dynamic_stats_given_static(matching_datasets, labels=['FAVOUR', 'AGAINST'])
-    get_dynamic_stats_given_static(matching_datasets, labels=['AGAINST', 'FAVOUR'])
-    get_dynamic_stats_given_static(matching_datasets, labels=['FAVOUR', 'FAVOUR'])
-    get_dynamic_stats_given_static(matching_datasets, labels=['AGAINST', 'AGAINST'])
-    get_dynamic_stats_given_static(matching_datasets, labels=['NEUTRAL', 'AGAINST'])
-    get_dynamic_stats_given_static(matching_datasets, labels=['NEUTRAL', 'FAVOUR'])
+    # static_stats = get_stats_by_topic(matching_datasets, topics, 'static', remove_na=False)
+    # dynamic_stats = get_stats_by_topic(matching_datasets, topics, 'dynamic', remove_na=False)
+    #
+    # original_static = get_static_stats_by_type_comment(matching_datasets, topics, type='original')
+    # answer_static = get_static_stats_by_type_comment(matching_datasets, topics, type='answer')
+    #
+    # get_dynamic_stats_given_static(matching_datasets, labels=['FAVOUR', 'AGAINST'])
+    # get_dynamic_stats_given_static(matching_datasets, labels=['AGAINST', 'FAVOUR'])
+    # get_dynamic_stats_given_static(matching_datasets, labels=['FAVOUR', 'FAVOUR'])
+    # get_dynamic_stats_given_static(matching_datasets, labels=['AGAINST', 'AGAINST'])
+    # get_dynamic_stats_given_static(matching_datasets, labels=['NEUTRAL', 'AGAINST'])
+    # get_dynamic_stats_given_static(matching_datasets, labels=['NEUTRAL', 'FAVOUR'])
 
     #plot_labels(static_stats, topics)
 
