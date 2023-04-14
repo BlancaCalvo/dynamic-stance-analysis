@@ -255,4 +255,5 @@ def main():
 
     #plot_labels(static_stats, topics)
 
-main()
+if __name__ == '__main__':
+    main()

@@ -26,9 +26,10 @@ fi
 SEED=1
 
 #MODEL ARGUMENTS
-
+SPLIT_STRATEGY=$1
 MODEL="/gpfs/projects/bsc88/huggingface/models/roberta-base-ca-v2"
-DATASET_PATH="/gpfs/scratch/bsc88/bsc88080/stance_models/DynamicStance.py"
+DATASET_PATH="/gpfs/scratch/bsc88/bsc88080/stance_models/data/$SPLIT_STRATEGY/DynamicStance.py"
+echo $DATASET_PATH
 LEARN_RATE=0.00001
 MODEL_NAME=$( basename $MODEL )
 NUM_EPOCHS=10
@@ -65,8 +66,8 @@ MODEL_ARGS+=" \
 
 #OUTPUT ARGUMENTS
 
-OUTPUT_DIR='output/'$MODEL_NAME
-LOGGING_DIR='tb/'$MODEL_NAME
+OUTPUT_DIR='output/'$MODEL_NAME'/'$SPLIT_STRATEGY
+LOGGING_DIR='tb/'$MODEL_NAME'/'$SPLIT_STRATEGY
 DIR_NAME=${DATASET_NAME}_${BATCH_SIZE_PER_GPU}_${LEARN_RATE}_${NUM_EPOCHS}_date_${DATETIME} #$DATETIME
 CACHE_DIR='cache/'$OUTPUT_DIR/$DIR_NAME
 
@@ -81,5 +82,6 @@ OUTPUT_ARGS=" \
 
 export HF_HOME=$CACHE_DIR/huggingface
 echo $SCRIPT
+echo $DATASET_PATH
 
 python $SCRIPT --seed $SEED $MODEL_ARGS $OUTPUT_ARGS

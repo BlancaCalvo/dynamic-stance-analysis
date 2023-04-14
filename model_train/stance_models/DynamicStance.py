@@ -20,8 +20,7 @@ _HOMEPAGE = """ """
 
 
 
-_URL = "data/random_splits/"
-#_URL = "data/topic_splits/"
+_URL = ""
 _TRAINING_FILE = "train.jsonl"
 _DEV_FILE = "dev.jsonl"
 _TEST_FILE = "test.jsonl"
@@ -66,8 +65,7 @@ class DynamicStance(datasets.GeneratorBasedBuilder):
                             "Elaborate",
                             "Query",
                             "Unrelated",
-                            "Neutral",
-                            "NA"
+                            "Neutral"
                         ]
                     ),
                 }
