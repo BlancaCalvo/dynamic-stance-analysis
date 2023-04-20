@@ -27,7 +27,7 @@ SEED=1
 
 #MODEL ARGUMENTS
 SPLIT_STRATEGY=$1
-MODEL="/gpfs/projects/bsc88/huggingface/models/roberta-base-ca-v2"
+MODEL="/gpfs/projects/bsc88/huggingface/models/"$2
 DATASET_PATH="/gpfs/scratch/bsc88/bsc88080/stance_models/data/$SPLIT_STRATEGY/DynamicStance.py"
 echo $DATASET_PATH
 LEARN_RATE=0.00001
