@@ -8,6 +8,8 @@ random.seed(2023)
 def save_json(test, train, dev, out_path):
     names = ['test', 'train', 'dev']
     for i, split in enumerate([test, train, dev]):
+        labels = [line['dynamic_stance'] for line in split]
+        print(names[i], Counter(labels))
         with open('data/'+out_path+ '/'+names[i] + '.jsonl', 'w') as file:
             for line in split:
                 file.write(json.dumps({'_id': line['id_original']+'_'+line['id_answer'], 'original': line['original_text'], 'answer': line['answer_text'], 'label': line['dynamic_stance']}) + "\n")
@@ -32,11 +34,12 @@ def get_golden_label(data, key, filter=False):
     return new_data
 
 def main():
-    simple = True
-    do_topic = True
-    include_raco_train = True
-    do_topic_with_raco = True
-    filtered_raco = True
+    simple = False
+    do_topic = False
+    include_raco_train = False
+    do_topic_with_raco = False
+    filtered_raco = False
+    only_raco = True
     topics = ['aeroport', 'vaccines', 'lloguer', 'benidormfest', 'subrogada']
 
     with open('data/final_dataset.jsonl') as f:
@@ -45,6 +48,7 @@ def main():
             data.append(json.loads(line))
 
     data = [line for line in data if line['dynamic_stance'] != 'NA']
+    random.shuffle(data)
     if simple:
         test = data[:1000]
         dev = data[1001:2001]
@@ -123,6 +127,21 @@ def main():
         dev = remaining[:1000]
         train = remaining[1001:]
         save_json(test, train, dev, "filtered_raco_augment")
+
+    if only_raco:
+        raco_data = get_golden_label(raco_data, 'dynamic')
+        transform_raco = []
+        for line in raco_data:
+            if line[9] != 'NA':
+                transform_raco.append(
+                    {'id_original': line[0], 'id_answer': line[1], 'original_text': line[2], 'answer_text': line[3],
+                     'dynamic_stance': line[9]})
+        random.shuffle(transform_raco)
+        test = transform_raco[:2000]
+        dev = transform_raco[2001:4001]
+        train = transform_raco[4002:]
+
+        save_json(test, train, dev, "staged_train")
 
 if __name__ == '__main__':
     main()

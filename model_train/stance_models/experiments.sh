@@ -23,4 +23,7 @@ do
 done
 
 # augment the data but just the easy one
-sbatch train_model.sh "filtered_raco_augment" $MODEL
+#sbatch train_model.sh "filtered_raco_augment" $MODEL
+
+# do a first training with only raco, to then finetune with twitter
+#sbatch train_model.sh "staged_train" $MODEL
