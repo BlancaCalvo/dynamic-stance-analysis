@@ -24,7 +24,7 @@ def get_macro_f1(path_output, path_gold):
     return (f1_score(gold, results, average='macro'), len(gold))
 
 def main():
-    models = ['roberta-large-ca-v2', 'mbert', 'mdeberta-v3-base'] # 'roberta-base-ca-v2',
+    models = ['roberta-large-ca-v2', 'mdeberta-v3-base'] # 'roberta-base-ca-v2', 'mbert',
     topics = ['vaccines', 'lloguer', 'aeroport',  'subrogada', 'benidormfest']
 
     table_simple_results = {}

@@ -1,0 +1,12 @@
+roberta-large-ca-v2 & 0.71 & 1000 \\
+mdeberta-v3-base & 0.66 & 1000 \\
+roberta-large-ca-v2 & vaccines & 0.1 & 4308 \\
+roberta-large-ca-v2 & lloguer & 0.14 & 2731 \\
+roberta-large-ca-v2 & aeroport & 0.18 & 1897 \\
+roberta-large-ca-v2 & subrogada & 0.41 & 1437 \\
+roberta-large-ca-v2 & benidormfest & 0.24 & 702 \\
+mdeberta-v3-base & vaccines & 0.12 & 4308 \\
+mdeberta-v3-base & lloguer & 0.17 & 2731 \\
+mdeberta-v3-base & aeroport & 0.19 & 1897 \\
+mdeberta-v3-base & subrogada & 0.27 & 1437 \\
+mdeberta-v3-base & benidormfest & 0.25 & 702 \\

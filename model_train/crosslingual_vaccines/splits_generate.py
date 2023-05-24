@@ -25,7 +25,7 @@ def main():
         for line in f:
             data.append(json.loads(line))
 
-    vaccines = [line for line in data if line['topic']=='vaccines' and line['dynamic_stance'] not in ['NA', 'Unrelated']]
+    vaccines = [line for line in data if line['topic']=='vaccines' and line['dynamic_stance'] not in ['NA']]
     for line in vaccines:
         line['lang'] = 'ca'
 
