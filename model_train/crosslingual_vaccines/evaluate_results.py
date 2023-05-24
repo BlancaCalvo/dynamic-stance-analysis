@@ -24,20 +24,23 @@ def get_macro_f1(path_output, path_gold):
     return (f1_score(gold, results, average='macro'), len(gold))
 
 def main():
-    models = ['mdeberta-v3-base'] # 'roberta-base-ca-v2', 'mbert',
+    model = 'mdeberta-v3-base' # 'roberta-base-ca-v2', 'mbert',
     #topics = ['vaccines', 'lloguer', 'aeroport',  'subrogada', 'benidormfest']
+    samples = ['cat_only', ('cat_nl', 'cat'), ('cat_nl', 'nl')]
 
     table_simple_results = {}
-    for model in models:
-        table_simple_results[model] = []
-        path = list(pathlib.Path('output/gpfs/scratch/bsc88/bsc88080/crosslingual_vaccines/output/'+model+'/cat_only').glob('Dy*/*.txt'))[0]
-        table_simple_results[model].append(get_macro_f1(path, 'data/crosslingual_vaccines/cat_only/test.jsonl'))
-
-        path_2 = list(pathlib.Path('output/gpfs/scratch/bsc88/bsc88080/crosslingual_vaccines/output/' + model + '/cat_nl').glob('Dy*/*.txt'))[-1]
-        table_simple_results[model].append(get_macro_f1(path_2, 'data/crosslingual_vaccines/cat_nl/ca_test.jsonl'))
+    for sample in samples:
+        table_simple_results[sample] = []
+        if sample == 'cat_only':
+            path = list(pathlib.Path('output/gpfs/scratch/bsc88/bsc88080/crosslingual_vaccines/output/'+model+'/'+sample).glob('Dy*/*.txt'))[0]
+            table_simple_results[sample].append(get_macro_f1(path, 'data/crosslingual_vaccines/'+sample+'/test.jsonl'))
+        else:
+            path = 'output/gpfs/scratch/bsc88/bsc88080/crosslingual_vaccines/output/'+model+'/'+ sample[0]+'/results_'+sample[1]+'.txt'
+            table_simple_results[sample].append(
+                get_macro_f1(path, 'data/crosslingual_vaccines/' + sample[0] + '/'+sample[1]+'_test.jsonl'))
 
     for key, entry in table_simple_results.items():
-        print(key + ' & '+ str(round(entry[0][0], 2)) + ' & '+ str(round(entry[1][0], 2)) + ' & ' + str(entry[0][1]) + ' \\\\')
+        print(str(key) + ' & '+ str(round(entry[0][0], 2)) + ' & ' + str(entry[0][1]) + ' \\\\')
 
 
 
