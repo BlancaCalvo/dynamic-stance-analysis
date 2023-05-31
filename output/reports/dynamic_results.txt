@@ -1,12 +1,36 @@
-roberta-large-ca-v2 & 0.51 & 0.57 & 1000 \\
-mdeberta-v3-base & 0.43 & 0.39 & 1000 \\
-roberta-large-ca-v2 & vaccines & 0.1 & 0.26 & 2850 \\
-roberta-large-ca-v2 & lloguer & 0.31 & 0.34 & 1555 \\
-roberta-large-ca-v2 & aeroport & 0.38 & 0.39 & 1073 \\
-roberta-large-ca-v2 & subrogada & 0.41 & 0.43 & 868 \\
-roberta-large-ca-v2 & benidormfest & 0.38 & 0.38 & 401 \\
-mdeberta-v3-base & vaccines & 0.25 & 0.18 & 2850 \\
-mdeberta-v3-base & lloguer & 0.27 & 0.24 & 1555 \\
-mdeberta-v3-base & aeroport & 0.32 & 0.27 & 1073 \\
-mdeberta-v3-base & subrogada & 0.34 & 0.34 & 868 \\
-mdeberta-v3-base & benidormfest & 0.34 & 0.27 & 401 \\
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/roberta-large-ca-v2/simple_splits/DynamicStance.py_8_0.00001_10_date_date_23-05-26_time_23-01-11/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/roberta-large-ca-v2/raco_augment/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_04-32-01/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/mdeberta-v3-base/simple_splits/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_02-38-43/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/mdeberta-v3-base/raco_augment/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_09-33-43/test_results_d_stance.txt
+roberta-large-ca-v2 & 0.62 & 0.65 & 1000 \\
+mdeberta-v3-base & 0.43 & 0.48 & 1000 \\
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/roberta-large-ca-v2/topic_splits/vaccines/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_00-15-45/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/roberta-large-ca-v2/raco_augment/topic_splits/vaccines/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_04-40-23/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/roberta-large-ca-v2/topic_splits/lloguer/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_01-09-54/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/roberta-large-ca-v2/raco_augment/topic_splits/lloguer/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_05-03-40/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/roberta-large-ca-v2/topic_splits/aeroport/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_01-19-43/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/roberta-large-ca-v2/raco_augment/topic_splits/aeroport/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_06-49-17/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/roberta-large-ca-v2/topic_splits/subrogada/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_02-10-40/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/roberta-large-ca-v2/raco_augment/topic_splits/subrogada/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_08-54-26/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/roberta-large-ca-v2/topic_splits/benidormfest/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_02-21-02/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/roberta-large-ca-v2/raco_augment/topic_splits/benidormfest/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_09-02-23/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/mdeberta-v3-base/topic_splits/vaccines/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_03-21-56/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/mdeberta-v3-base/raco_augment/topic_splits/vaccines/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_11-26-30/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/mdeberta-v3-base/topic_splits/lloguer/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_03-32-10/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/mdeberta-v3-base/raco_augment/topic_splits/lloguer/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_12-10-09/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/mdeberta-v3-base/topic_splits/aeroport/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_03-47-03/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/mdeberta-v3-base/raco_augment/topic_splits/aeroport/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_13-33-25/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/mdeberta-v3-base/topic_splits/subrogada/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_03-53-41/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/mdeberta-v3-base/raco_augment/topic_splits/subrogada/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_13-44-48/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/mdeberta-v3-base/topic_splits/benidormfest/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_04-13-39/test_results_d_stance.txt
+output/gpfs/scratch/bsc88/bsc88080/stance_models/output/mdeberta-v3-base/raco_augment/topic_splits/benidormfest/DynamicStance.py_8_0.00001_10_date_date_23-05-27_time_13-51-16/test_results_d_stance.txt
+roberta-large-ca-v2 & vaccines & 0.43 & 0.47 & 2870 \\
+roberta-large-ca-v2 & lloguer & 0.4 & 0.44 & 1556 \\
+roberta-large-ca-v2 & aeroport & 0.49 & 0.54 & 1078 \\
+roberta-large-ca-v2 & subrogada & 0.47 & 0.48 & 868 \\
+roberta-large-ca-v2 & benidormfest & 0.43 & 0.43 & 401 \\
+mdeberta-v3-base & vaccines & 0.4 & 0.44 & 2870 \\
+mdeberta-v3-base & lloguer & 0.39 & 0.42 & 1556 \\
+mdeberta-v3-base & aeroport & 0.43 & 0.45 & 1078 \\
+mdeberta-v3-base & subrogada & 0.43 & 0.43 & 868 \\
+mdeberta-v3-base & benidormfest & 0.42 & 0.42 & 401 \\

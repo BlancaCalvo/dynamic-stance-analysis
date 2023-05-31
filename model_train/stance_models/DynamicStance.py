@@ -60,12 +60,10 @@ class DynamicStance(datasets.GeneratorBasedBuilder):
                     "label": datasets.features.ClassLabel
                     (names=
                         [
-                            "Agree",
                             "Disagree",
                             "Elaborate",
-                            "Query",
-                            "Unrelated",
-                            "Neutral"
+                            "Neutral",
+                            "NA"
                         ]
                     ),
                 }

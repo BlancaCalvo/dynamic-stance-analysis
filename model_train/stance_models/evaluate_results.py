@@ -30,10 +30,12 @@ def main():
     table_simple_results = {}
     for model in models:
         table_simple_results[model] = []
-        path = list(pathlib.Path('output/gpfs/scratch/bsc88/bsc88080/stance_models/output/'+model+'/simple_splits').glob('Dy*/*.txt'))[0]
+        path = list(pathlib.Path('output/gpfs/scratch/bsc88/bsc88080/stance_models/output/'+model+'/simple_splits').glob('DynamicStance.py_8_0.00001_10_date_date_23-05-2*/*.txt'))[-1]
+        print(path)
         table_simple_results[model].append(get_macro_f1(path, 'data/simple_splits/test.jsonl'))
 
-        path_2 = list(pathlib.Path('output/gpfs/scratch/bsc88/bsc88080/stance_models/output/' + model + '/raco_augment').glob('Dy*/*.txt'))[-1]
+        path_2 = list(pathlib.Path('output/gpfs/scratch/bsc88/bsc88080/stance_models/output/' + model + '/raco_augment').glob('DynamicStance.py_8_0.00001_10_date_date_23-05-2*/*.txt'))[-1]
+        print(path_2)
         table_simple_results[model].append(get_macro_f1(path_2, 'data/simple_splits/test.jsonl')) #it's the same test set
 
         #path_3 = list(pathlib.Path('output/gpfs/scratch/bsc88/bsc88080/stance_models/output/' + model + '/focal_loss').glob(
@@ -47,10 +49,12 @@ def main():
     for model in models:
         for topic in topics:
             table_topic_results[(model, topic)] = []
-            path = list(pathlib.Path('output/gpfs/scratch/bsc88/bsc88080/stance_models/output/'+model+'/topic_splits/'+topic).glob('Dy*/*.txt'))[-1]
+            path = list(pathlib.Path('output/gpfs/scratch/bsc88/bsc88080/stance_models/output/'+model+'/topic_splits/'+topic).glob('DynamicStance.py_8_0.00001_10_date_date_23-05-2*/*.txt'))[-1]
+            print(path)
             table_topic_results[(model,topic)].append(get_macro_f1(path, 'data/topic_splits/'+topic+'/test.jsonl'))
 
-            path_2 = list(pathlib.Path('output/gpfs/scratch/bsc88/bsc88080/stance_models/output/' + model + '/raco_augment/topic_splits/' + topic).glob('Dy*/*.txt'))[0]
+            path_2 = list(pathlib.Path('output/gpfs/scratch/bsc88/bsc88080/stance_models/output/' + model + '/raco_augment/topic_splits/' + topic).glob('DynamicStance.py_8_0.00001_10_date_date_23-05-2*/*.txt'))[-1]
+            print(path_2)
             table_topic_results[(model, topic)].append(get_macro_f1(path_2, 'data/raco_augment/topic_splits/' + topic + '/test.jsonl'))
 
     for key, entry in table_topic_results.items():

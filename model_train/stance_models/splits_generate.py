@@ -34,20 +34,30 @@ def get_golden_label(data, key, filter=False):
     return new_data
 
 def main():
-    simple = False
-    do_topic = False
-    include_raco_train = False
-    do_topic_with_raco = False
+    simple = True
+    do_topic = True
+    include_raco_train = True
+    do_topic_with_raco = True
     filtered_raco = False
-    only_raco = True
+    only_raco = False
+    few_labels = True
     topics = ['aeroport', 'vaccines', 'lloguer', 'benidormfest', 'subrogada']
 
     with open('data/final_dataset.jsonl') as f:
         data = []
         for line in f:
             data.append(json.loads(line))
+    if not few_labels:
+        data = [line for line in data if line['dynamic_stance'] != 'NA']
+    else:
+        for line in data:
+            if line['dynamic_stance'] in ['Query']:
+                line['dynamic_stance'] = 'Neutral'
+            if line['dynamic_stance'] == 'Agree':
+                line['dynamic_stance'] = 'Elaborate'
+            if line['dynamic_stance'] == 'Unrelated':
+                line['dynamic_stance'] = 'NA'
 
-    data = [line for line in data if line['dynamic_stance'] != 'NA']
     random.shuffle(data)
     if simple:
         test = data[:1000]
@@ -84,7 +94,18 @@ def main():
         remaining = data[1001:]
         for line in raco_data:
             remaining.append({'id_original':line[0], 'id_answer':line[1], 'original_text':line[2], 'answer_text':line[3], 'dynamic_stance': line[9]})
-        remaining = [line for line in remaining if line['dynamic_stance'] != 'NA']
+
+        if not few_labels:
+            remaining = [line for line in remaining if line['dynamic_stance'] != 'NA']
+        else:
+            for line in remaining:
+                if line['dynamic_stance'] in ['Query']:
+                    line['dynamic_stance'] = 'Neutral'
+                if line['dynamic_stance'] == 'Agree':
+                    line['dynamic_stance'] = 'Elaborate'
+                if line['dynamic_stance'] == 'Unrelated':
+                    line['dynamic_stance'] = 'NA'
+
         random.shuffle(remaining)
         dev = remaining[:1000]
         train = remaining[1001:]
@@ -95,7 +116,16 @@ def main():
         data_with_raco = data.copy()
         for line in raco_data:
             data_with_raco.append({'id_original':line[0], 'id_answer':line[1], 'original_text':line[2], 'answer_text':line[3], 'dynamic_stance': line[9], 'topic': ""})
-        data_with_raco = [line for line in data if line['dynamic_stance'] != 'NA']
+        if not few_labels:
+            data_with_raco = [line for line in data if line['dynamic_stance'] != 'NA']
+        else:
+            for line in data_with_raco:
+                if line['dynamic_stance'] in ['Query']:
+                    line['dynamic_stance'] = 'Neutral'
+                if line['dynamic_stance'] == 'Agree':
+                    line['dynamic_stance'] = 'Elaborate'
+                if line['dynamic_stance'] == 'Unrelated':
+                    line['dynamic_stance'] = 'NA'
         random.shuffle(data_with_raco)
         for topic in topics:
             test = []

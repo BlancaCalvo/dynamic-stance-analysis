@@ -19,13 +19,25 @@ def save_json(datasets, names, out_path):
 def main():
     cat_only = True
     do_nl = True
+    few_labels = True
 
     with open('data/final_dataset.jsonl') as f:
         data = []
         for line in f:
             data.append(json.loads(line))
 
-    vaccines = [line for line in data if line['topic']=='vaccines' and line['dynamic_stance'] not in ['NA']]
+    vaccines = [line for line in data if line['topic']=='vaccines']
+    if not few_labels:
+        vaccines = [line for line in vaccines if line['dynamic_stance'] != 'NA']
+    else:
+        for line in vaccines:
+            if line['dynamic_stance'] in ['Query']:
+                line['dynamic_stance'] = 'Neutral'
+            if line['dynamic_stance'] == 'Agree':
+                line['dynamic_stance'] = 'Elaborate'
+            if line['dynamic_stance'] == 'Unrelated':
+                line['dynamic_stance'] = 'NA'
+
     for line in vaccines:
         line['lang'] = 'ca'
 
@@ -41,8 +53,16 @@ def main():
             nl_data = []
             for line in f:
                 nl_data.append(json.loads(line))
-        nl_data = [line for line in nl_data if
-                    line['dynamic_stance'] not in ['NA', 'Unrelated']]
+        if not few_labels:
+            nl_data = [line for line in nl_data if line['dynamic_stance'] != 'NA']
+        else:
+            for line in nl_data:
+                if line['dynamic_stance'] in ['Query']:
+                    line['dynamic_stance'] = 'Neutral'
+                if line['dynamic_stance'] == 'Agree':
+                    line['dynamic_stance'] = 'Elaborate'
+                if line['dynamic_stance'] == 'Unrelated':
+                    line['dynamic_stance'] = 'NA'
         random.shuffle(nl_data)
         for line in nl_data:
             line['lang'] = 'nl'
@@ -53,7 +73,7 @@ def main():
         random.shuffle(remaining)
         dev = remaining[:500]
         train = remaining[501:]
-        save_json([ca_test, nl_test, train, dev], ['ca_test', 'nl_test', 'train', 'dev'], "cat_nl")
+        save_json([ca_test, nl_test, train, dev], ['cat_test', 'nl_test', 'train', 'dev'], "cat_nl")
 
 
 
