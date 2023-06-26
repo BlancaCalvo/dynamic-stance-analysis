@@ -24,18 +24,22 @@ def get_macro_f1(path_output, path_gold):
     return (f1_score(gold, results, average='macro'), len(gold))
 
 def main():
-    model = 'mdeberta-v3-base' # 'roberta-base-ca-v2', 'mbert',
+    #model = 'mdeberta-v3-base' # 'roberta-base-ca-v2', 'mbert',
     #topics = ['vaccines', 'lloguer', 'aeroport',  'subrogada', 'benidormfest']
-    samples = ['cat_only', ('cat_nl', 'cat'), ('cat_nl', 'nl')]
+    samples = [('only', 'cat'), ('only','nl'), ('cat_nl', 'cat'), ('cat_nl', 'nl'), ('zeroshot', 'nl_to_cat'), ('zeroshot', 'cat_to_nl')]
 
     table_simple_results = {}
     for sample in samples:
         table_simple_results[sample] = []
-        if sample == 'cat_only':
-            path = list(pathlib.Path('output/gpfs/scratch/bsc88/bsc88080/crosslingual_vaccines/output/'+model+'/'+sample).glob('Dy*/*.txt'))[0]
-            table_simple_results[sample].append(get_macro_f1(path, 'data/crosslingual_vaccines/'+sample+'/test.jsonl'))
+        if sample[0] == 'only':
+            path = 'output/stance_data/crosslingual_vaccines/output/'+sample[1]+'_only.txt'
+            table_simple_results[sample].append(get_macro_f1(path, 'data/crosslingual_vaccines/'+sample[1]+'_only/test.jsonl'))
+        elif sample[0] == 'zeroshot':
+            path = 'output/stance_data/crosslingual_vaccines/output/' + sample[0]+'_'+ sample[1] + '.txt'
+            table_simple_results[sample].append(
+                get_macro_f1(path, 'data/crosslingual_vaccines/' + sample[1].split('_')[0] + '_only/test.jsonl'))
         else:
-            path = 'output/gpfs/scratch/bsc88/bsc88080/crosslingual_vaccines/output/'+model+'/'+ sample[0]+'/results_'+sample[1]+'.txt'
+            path = 'output/stance_data/crosslingual_vaccines/output/'+sample[1]+'_test_results_d_stance.txt'
             table_simple_results[sample].append(
                 get_macro_f1(path, 'data/crosslingual_vaccines/' + sample[0] + '/'+sample[1]+'_test.jsonl'))
 

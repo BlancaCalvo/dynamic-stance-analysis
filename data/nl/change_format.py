@@ -19,11 +19,13 @@ def main():
         for line in r:
             nl_data.append(line)
     print(len(nl_data))
-    nl_data = get_golden_label(nl_data)
+    #nl_data = get_golden_label(nl_data)
 
     with open('nl_data.jsonl', 'w') as o:
         for i,line in enumerate(nl_data):
-            o.write(json.dumps({'_id':i, "id_original": line[0], "id_answer": line[2], "original_text":line[1], 'topic':'vaccines', 'dynamic_stance':line[-1]}))
+            if line[4] != 'Unrelated':
+                o.write(json.dumps({'_id':i, "id_original": line[0], "id_answer": line[2], "original_text":line[1], "answer_text":line[3], 'topic':'vaccines', 'dynamic_stance':line[5]}))
+                o.write('\n')
 
 if __name__ == '__main__':
     main()
