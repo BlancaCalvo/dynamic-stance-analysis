@@ -43,7 +43,7 @@ def main():
     few_labels = True
     topics = ['aeroport', 'vaccines', 'lloguer', 'benidormfest', 'subrogada']
 
-    with open('data/final_dataset.jsonl') as f:
+    with open('data/tweets_final_dataset.jsonl') as f:
         data = []
         for line in f:
             data.append(json.loads(line))
@@ -84,16 +84,27 @@ def main():
             save_json(test, train, dev, 'topic_splits/'+topic)
 
     raco_data = []
-    with open('data/annotated/dynamic_stance_forums.csv') as f:
-        reader = csv.reader(f)
-        for item in reader:
-            raco_data.append(item)
+    # with open('data/annotated/dynamic_stance_forums.csv') as f:
+    #     reader = csv.reader(f)
+    #     for item in reader:
+    #         raco_data.append(item)
+    # if include_raco_train:
+    #     raco_data = get_golden_label(raco_data, 'dynamic')
+    #     test = data[:1000]
+    #     remaining = data[1001:]
+    #     for line in raco_data:
+    #         remaining.append({'id_parent':line[0], 'id_reply':line[1], 'parent_text':line[2], 'reply_text':line[3], 'dynamic_stance': line[9]})
+    #
+
+    with open('data/raco_final_dataset.jsonl') as f:
+        raco_data = []
+        for line in f:
+            raco_data.append(json.loads(line))
+
     if include_raco_train:
-        raco_data = get_golden_label(raco_data, 'dynamic')
         test = data[:1000]
         remaining = data[1001:]
-        for line in raco_data:
-            remaining.append({'id_parent':line[0], 'id_reply':line[1], 'parent_text':line[2], 'reply_text':line[3], 'dynamic_stance': line[9]})
+        remaining.extend(raco_data)
 
         if not few_labels:
             remaining = [line for line in remaining if line['dynamic_stance'] != 'NA']
