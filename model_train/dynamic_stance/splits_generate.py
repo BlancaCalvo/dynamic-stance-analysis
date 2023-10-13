@@ -5,14 +5,19 @@ import random
 from collections import Counter
 random.seed(2023)
 
-def save_json(test, train, dev, out_path):
+def save_json(test, train, dev, out_path, raco=False):
     names = ['test', 'train', 'dev']
     for i, split in enumerate([test, train, dev]):
         labels = [line['dynamic_stance'] for line in split]
         print(names[i], Counter(labels))
         with open('data/'+out_path+ '/'+names[i] + '.jsonl', 'w') as file:
             for line in split:
-                file.write(json.dumps({'_id': line['id_parent']+'_'+line['id_reply'], 'parent': line['parent_text'], 'reply': line['reply_text'], 'label': line['dynamic_stance']}) + "\n")
+                try:
+                    file.write(json.dumps({'_id': line['id_parent']+'_'+line['id_reply'], 'parent': line['parent_text'], 'reply': line['reply_text'], 'label': line['dynamic_stance'], 'topic': line['topic']}) + "\n")
+                except KeyError:
+                    #print(line)
+                    file.write(json.dumps({'_id': line['id_conversation']+'_'+line['id_reply'], 'parent': line['parent_text'], 'reply': line['reply_text'], 'label': line['dynamic_stance']}) + "\n")
+
 
 def get_golden_label(data, key, filter=False):
     indexes = {'dynamic':{'last':8, 'labels':[4,7]}, 'static':{'last':5, 'labels':[3,4]}}
@@ -120,7 +125,7 @@ def main():
         random.shuffle(remaining)
         dev = remaining[:1000]
         train = remaining[1001:]
-        save_json(test, train, dev, "raco_augment")
+        save_json(test, train, dev, "raco_augment", True)
 
     if do_topic_with_raco:
         raco_data = get_golden_label(raco_data, 'dynamic')
@@ -153,7 +158,7 @@ def main():
                     else:
                         train.append(line)
             print(topic, len(train), len(dev), len(test))
-            save_json(test, train, dev, 'raco_augment/topic_splits/'+topic)
+            save_json(test, train, dev, 'raco_augment/topic_splits/'+topic, True)
 
     if filtered_raco:
         raco_data = get_golden_label(raco_data, 'dynamic', filter=True)
@@ -167,7 +172,7 @@ def main():
         random.shuffle(remaining)
         dev = remaining[:1000]
         train = remaining[1001:]
-        save_json(test, train, dev, "filtered_raco_augment")
+        save_json(test, train, dev, "filtered_raco_augment", True)
 
     if only_raco:
         raco_data = get_golden_label(raco_data, 'dynamic')
@@ -182,7 +187,7 @@ def main():
         dev = transform_raco[2001:4001]
         train = transform_raco[4002:]
 
-        save_json(test, train, dev, "staged_train")
+        save_json(test, train, dev, "staged_train", True)
 
 if __name__ == '__main__':
     main()
