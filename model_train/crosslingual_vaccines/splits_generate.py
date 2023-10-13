@@ -16,8 +16,8 @@ def save_json(datasets, names, out_path):
         with open('data/crosslingual_vaccines/'+out_path+ '/'+names[i] + '.jsonl', 'w') as file:
             for line in split:
                 file.write(json.dumps(
-                    {'_id': line['id_original'] + '_' + line['id_answer'], 'original': line['original_text'],
-                     'answer': line['answer_text'], 'label': line['dynamic_stance']}) + "\n")
+                    {'_id': line['id_parent'] + '_' + line['id_reply'], 'parent': line['parent_text'],
+                     'reply': line['reply_text'], 'label': line['dynamic_stance']}) + "\n")
 
 def main():
     cat_only = True

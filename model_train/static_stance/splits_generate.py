@@ -29,12 +29,12 @@ def main():
     static_corpus=[]
     done_ids = []
     for line in data:
-        if line['id_original'] not in done_ids:
-            static_corpus.append({'_id': line['id_original'], 'text': line['original_text'], 'label': line['original_stance'], 'topic':line['topic']})
-            done_ids.append(line['id_original'])
-        if line['id_answer'] not in done_ids:
-            static_corpus.append({'_id': line['id_answer'], 'text': line['answer_text'], 'label': line['answer_stance'], 'topic':line['topic']})
-            done_ids.append(line['id_answer'])
+        if line['id_parent'] not in done_ids:
+            static_corpus.append({'_id': line['id_parent'], 'text': line['parent_text'], 'label': line['parent_stance'], 'topic':line['topic']})
+            done_ids.append(line['id_parent'])
+        if line['id_reply'] not in done_ids:
+            static_corpus.append({'_id': line['id_reply'], 'text': line['reply_text'], 'label': line['reply_stance'], 'topic':line['topic']})
+            done_ids.append(line['id_reply'])
 
     print(len(static_corpus))
 

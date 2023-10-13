@@ -174,9 +174,9 @@ def plot_labels(results, topics):
 
 def json_with_all_data(datasets, remove_text=False):
     if remove_text:
-        out = '../data/uploading_dataset.jsonl'
+        out = '../data/tweets_uploading_dataset.jsonl'
     else:
-        out = '../data/final_dataset.jsonl'
+        out = '../data/tweets_final_dataset.jsonl'
     id_to_line = {}
     for key, data in datasets.items():
         if key in ['emotions', 'static']:
@@ -192,16 +192,16 @@ def json_with_all_data(datasets, remove_text=False):
             original_text = line[2]
             answer_text = line[3]
         final.append({'_id':str(i),
-                      'id_original': line[0],
-                      'id_answer': line[1],
-                      'original_text': original_text,
-                      'answer_text': answer_text,
+                      'id_parent': line[0],
+                      'id_reply': line[1],
+                      'parent_text': original_text,
+                      'reply_text': answer_text,
                       'topic': line[9],
                       'dynamic_stance': line[10],
-                      'original_stance': datasets['static'][id_to_line['static'][line[0]]][6],
-                      'answer_stance': datasets['static'][id_to_line['static'][line[1]]][6],
-                      'original_emotion': datasets['emotions'][id_to_line['emotions'][line[0]]][6],
-                      'answer_emotion': datasets['emotions'][id_to_line['emotions'][line[1]]][6],
+                      'parent_stance': datasets['static'][id_to_line['static'][line[0]]][6],
+                      'reply_stance': datasets['static'][id_to_line['static'][line[1]]][6],
+                      'parent_emotion': datasets['emotions'][id_to_line['emotions'][line[0]]][6],
+                      'reply_emotion': datasets['emotions'][id_to_line['emotions'][line[1]]][6],
                       })
 
     with open(out, 'w') as f:

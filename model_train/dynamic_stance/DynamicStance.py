@@ -96,7 +96,7 @@ class DynamicStance(datasets.GeneratorBasedBuilder):
             data = [json.loads(line) for line in f]
             for id_, article in enumerate(data):
                     yield id_, {
-                        "sentence1": article['original'],
-                        "sentence2": article['answer'],
+                        "sentence1": article['parent'],
+                        "sentence2": article['reply'],
                         "label": article['label'],
                     }

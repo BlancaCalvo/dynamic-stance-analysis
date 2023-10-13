@@ -12,7 +12,7 @@ def save_json(test, train, dev, out_path):
         print(names[i], Counter(labels))
         with open('data/'+out_path+ '/'+names[i] + '.jsonl', 'w') as file:
             for line in split:
-                file.write(json.dumps({'_id': line['id_original']+'_'+line['id_answer'], 'original': line['original_text'], 'answer': line['answer_text'], 'label': line['dynamic_stance']}) + "\n")
+                file.write(json.dumps({'_id': line['id_parent']+'_'+line['id_reply'], 'parent': line['parent_text'], 'reply': line['reply_text'], 'label': line['dynamic_stance']}) + "\n")
 
 def get_golden_label(data, key, filter=False):
     indexes = {'dynamic':{'last':8, 'labels':[4,7]}, 'static':{'last':5, 'labels':[3,4]}}
@@ -93,7 +93,7 @@ def main():
         test = data[:1000]
         remaining = data[1001:]
         for line in raco_data:
-            remaining.append({'id_original':line[0], 'id_answer':line[1], 'original_text':line[2], 'answer_text':line[3], 'dynamic_stance': line[9]})
+            remaining.append({'id_parent':line[0], 'id_reply':line[1], 'parent_text':line[2], 'reply_text':line[3], 'dynamic_stance': line[9]})
 
         if not few_labels:
             remaining = [line for line in remaining if line['dynamic_stance'] != 'NA']
@@ -115,7 +115,7 @@ def main():
         raco_data = get_golden_label(raco_data, 'dynamic')
         data_with_raco = data.copy()
         for line in raco_data:
-            data_with_raco.append({'id_original':line[0], 'id_answer':line[1], 'original_text':line[2], 'answer_text':line[3], 'dynamic_stance': line[9], 'topic': ""})
+            data_with_raco.append({'id_parent':line[0], 'id_reply':line[1], 'parent_text':line[2], 'reply_text':line[3], 'dynamic_stance': line[9], 'topic': ""})
         if not few_labels:
             data_with_raco = [line for line in data if line['dynamic_stance'] != 'NA']
         else:
@@ -150,7 +150,7 @@ def main():
         remaining = data[1001:]
         for line in raco_data:
             remaining.append(
-                {'id_original': line[0], 'id_answer': line[1], 'original_text': line[2], 'answer_text': line[3],
+                {'id_parent': line[0], 'id_reply': line[1], 'parent_text': line[2], 'reply_text': line[3],
                  'dynamic_stance': line[9]})
         remaining = [line for line in remaining if line['dynamic_stance'] != 'NA']
         random.shuffle(remaining)
@@ -164,7 +164,7 @@ def main():
         for line in raco_data:
             if line[9] != 'NA':
                 transform_raco.append(
-                    {'id_original': line[0], 'id_answer': line[1], 'original_text': line[2], 'answer_text': line[3],
+                    {'id_parent': line[0], 'id_reply': line[1], 'parent_text': line[2], 'reply_text': line[3],
                      'dynamic_stance': line[9]})
         random.shuffle(transform_raco)
         test = transform_raco[:2000]
