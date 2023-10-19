@@ -9,7 +9,7 @@ The folders of [analysis](https://github.com/projecte-aina/dynamic-stance-analys
 
 The folder [data](https://github.com/projecte-aina/dynamic-stance-analysis/tree/main/data) contains the publicly distributable format of the Dutch component of DySC, the Dutch Stance Twitter (DuST). To access the full text format, interested must sign a Data Sharing agreement. The full text version of the corpus is available via [DataverseNL](https://doi.org/10.34894/OOTV3G). 
 
-The Catalan components of DyST are available via Hugging Face datasets:
+The Catalan components of DySC are available via Hugging Face datasets:
 
 - Catalan Stance and Emotions Twitter dataset (CaSET): https://huggingface.co/datasets/projecte-aina/CaSET-catalan-stance-emotions-twitter 
 
