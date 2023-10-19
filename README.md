@@ -6,4 +6,19 @@ Stance detection is an increasingly popular task that has been mainly modeled as
 
 The folders of [analysis](https://github.com/projecte-aina/dynamic-stance-analysis/tree/main/analysis) and [create_dataset](https://github.com/projecte-aina/dynamic-stance-analysis/tree/main/create_dataset) contain the scripts used to create and analyse the datasets of this article. If you want to reproduce the results follow the instructions in [model_train](https://github.com/projecte-aina/dynamic-stance-analysis/tree/main/model_train). 
 
+
+The folder [data](https://github.com/projecte-aina/dynamic-stance-analysis/tree/main/data) contains the publicly distributable format of the Dutch component of DySC, the Dutch Stance Twitter (DuST). To access the full text format, interested must sign a Data Sharing agreement. The full text version of the corpus is available via [DataverseNL](https://doi.org/10.34894/OOTV3G). 
+
+The Catalan components of DyST are available via Hugging Face datasets:
+
+- Catalan Stance and Emotions Twitter dataset (CaSET): https://huggingface.co/datasets/projecte-aina/CaSET-catalan-stance-emotions-twitter 
+
+- Catalan Stance and Emotion Racó dataset (CaSERa): https://huggingface.co/datasets/projecte-aina/CaSERa-catalan-stance-emotions-raco
+
 ### Cite
+
+Calvo Figueras, B., Baucells, I., and Caselli, T. 2023. Dynamic Stance: Modeling Discussions by Labeling the Interactions. In: Findings of the Association for Computational Linguistics: EMNLP 2023, Singapore. Association for Computational Linguistics
+
+```
+
+```
