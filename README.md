@@ -20,5 +20,22 @@ The Catalan components of DySC are available via Hugging Face datasets:
 Calvo Figueras, B., Baucells, I., and Caselli, T. 2023. Dynamic Stance: Modeling Discussions by Labeling the Interactions. In: Findings of the Association for Computational Linguistics: EMNLP 2023, Singapore. Association for Computational Linguistics
 
 ```
-
+@inproceedings{figueras-etal-2023-dynamic,
+    title = "Dynamic Stance: Modeling Discussions by Labeling the Interactions",
+    author = "Figueras, Blanca  and
+      Baucells, Irene  and
+      Caselli, Tommaso",
+    editor = "Bouamor, Houda  and
+      Pino, Juan  and
+      Bali, Kalika",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2023",
+    month = dec,
+    year = "2023",
+    address = "Singapore",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.findings-emnlp.432",
+    doi = "10.18653/v1/2023.findings-emnlp.432",
+    pages = "6503--6515",
+    abstract = "Stance detection is an increasingly popular task that has been mainly modeled as a static task, by assigning the expressed attitude of a text toward a given topic. Such a framing presents limitations, with trained systems showing poor generalization capabilities and being strongly topic-dependent. In this work, we propose modeling stance as a dynamic task, by focusing on the interactions between a message and their replies. For this purpose, we present a new annotation scheme that enables the categorization of all kinds of textual interactions. As a result, we have created a new corpus, the Dynamic Stance Corpus (DySC), consisting of three datasets in two middle-resourced languages: Catalan and Dutch. Our data analysis further supports our modeling decisions, empirically showing differences between the annotation of stance in static and dynamic contexts. We fine-tuned a series of monolingual and multilingual models on DySC, showing portability across topics and languages.",
+}
 ```
